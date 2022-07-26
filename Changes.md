@@ -1,5 +1,9 @@
 # Revision history for ip2proxy
 
+## 3.3.1  -- 2022-07-26
+
+* Fixed undeclared variable.
+
 ## 3.3.0  -- 2022-07-05
 
 * Reduced file I/O.
