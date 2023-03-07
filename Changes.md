@@ -1,5 +1,9 @@
 # Revision history for ip2proxy
 
+## 3.3.2  -- 2023-03-07
+
+* Fixed overflow issue.
+
 ## 3.3.1  -- 2022-07-26
 
 * Fixed undeclared variable.
