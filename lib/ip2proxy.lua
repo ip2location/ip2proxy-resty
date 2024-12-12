@@ -91,7 +91,7 @@ local lastseen_position = {0, 0, 0, 0, 0, 0, 0, 11, 11, 11, 11}
 local threat_position = {0, 0, 0, 0, 0, 0, 0, 0, 12, 12, 12}
 local provider_position = {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 13}
 
-local api_version = "3.3.2"
+local api_version = "3.3.3"
 
 local modes = {
   countryshort = 0x00001,
@@ -116,12 +116,26 @@ local invalid_address = "Invalid IP address."
 local missing_file = "Invalid database file."
 local not_supported = "This parameter is unavailable for selected data file. Please upgrade the data file."
 local invalid_bin = "Incorrect IP2Proxy BIN file format. Please make sure that you are using the latest IP2Proxy BIN file."
+local ipv6_not_supported = "IPv6 address missing in IPv4 BIN."
 
 -- for debugging purposes
- local function printme(stuff)
- local inspect = require('inspect')
- print(inspect(stuff))
- end
+-- local function printme(stuff)
+-- local inspect = require('inspect')
+-- print(inspect(stuff))
+-- end
+
+-- local function printmestr(stuff)
+-- local inspect = require('inspect')
+-- return (inspect(stuff))
+-- end
+
+--local function printx(x)
+--  print("0x"..bit.tohex(x))
+--end
+
+local function printxstr(x)
+  return ("0x"..bit.tohex(x))
+end
 
 -- read row
 local function readrow(myfile, pos, len)
@@ -428,7 +442,8 @@ function ip2proxy:checkip(ip)
     elseif ipnum >= from_teredo and ipnum <= to_teredo then -- Teredo
       override = 1
       ipnum2 = bit.bnot(teredopart)
-      ipnum = bn.new(ipnum2) -- convert back to bn
+      ipnum3 = printxstr(ipnum2):sub(3) -- to get unsigned hex without the "Ox"
+      ipnum = bn.from_hex(ipnum3)
     end
 
     local ipindex = 0;
@@ -519,6 +534,11 @@ function ip2proxy:query(ipaddress, mode)
     maxip = max_ipv4_range
     colsize = self.ipv4columnsize
   else
+    if self.ipv6databasecount == 0 then
+      local result = ip2proxyrecord:loadmessage(ipv6_not_supported)
+      -- printme(result)
+      return result
+    end
     firstcol = 16 -- 16 bytes for IP From    
     baseaddr = self.ipv6databaseaddr
     high = self.ipv6databasecount
