@@ -42,6 +42,7 @@ Below are the functions supported in this package.
 |get_lastseen|Return the number of days that the proxy was last seen.|
 |get_threat|Return the threat type of the proxy.|
 |get_provider|Return the provider of the proxy.|
+|get_fraudscore|Return the potential risk score (0 - 99) associated with IP address.|
 
 ## Usage
 
@@ -58,8 +59,10 @@ http {
             default_type text/html;
             content_by_lua_block {
                 ip2proxy = require('ip2proxy')
-                local ip2prox = ip2proxy:open('/usr/local/ip2location/IP2PROXY-IP-PROXYTYPE-COUNTRY-REGION-CITY-ISP-DOMAIN-USAGETYPE-ASN-LASTSEEN-THREAT-RESIDENTIAL-PROVIDER.BIN')
+                local ip2prox = ip2proxy:open('/usr/local/ip2location/IP2PROXY-IP-PROXYTYPE-COUNTRY-REGION-CITY-ISP-DOMAIN-USAGETYPE-ASN-LASTSEEN-THREAT-RESIDENTIAL-PROVIDER-FRAUDSCORE.BIN')
                 local result = ip2prox:get_all('8.8.8.8')
+                ngx.say("isproxy: " .. result.isproxy)
+                ngx.say("proxytype: " .. result.proxytype)
                 ngx.say("country_short: " .. result.country_short)
                 ngx.say("country_long: " .. result.country_long)
                 ngx.say("region: " .. result.region)
@@ -72,8 +75,7 @@ http {
                 ngx.say("lastseen: " .. result.lastseen)
                 ngx.say("threat: " .. result.threat)
                 ngx.say("provider: " .. result.provider)
-                ngx.say("proxytype: " .. result.proxytype)
-                ngx.say("isproxy: " .. result.isproxy)
+                ngx.say("fraudscore: " .. result.fraudscore)
                 ip2prox:close()
             }
         }

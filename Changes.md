@@ -1,5 +1,9 @@
 # Revision history for ip2proxy
 
+## 3.4.0  -- 2025-02-20
+
+* Added support for fraud score.
+
 ## 3.3.3  -- 2024-12-12
 
 * Fixed error with IPv6 IP when using IPv4 BIN.
