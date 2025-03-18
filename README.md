@@ -7,7 +7,7 @@ This package allows user to query an IP address if it was being used as VPN anon
 
 As an alternative, this package can also call the IP2Proxy Web Service. This requires an API key. If you don't have an existing API key, you can subscribe for one at the below:
 
-https://www.ip2location.com/web-service/ip2proxy
+<https://www.ip2location.com/web-service/ip2proxy>
 
 ## Developer Documentation
 To learn more about installation, usage, and code examples, please visit the developer documentation at [https://ip2proxy-resty.readthedocs.io/en/latest/](https://ip2proxy-resty.readthedocs.io/en/latest/).
