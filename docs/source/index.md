@@ -1,4 +1,5 @@
 # IP2Proxy OpenResty Package
+[![OPM Version](https://img.shields.io/opm/v/ip2location/ip2proxy-resty)](https://opm.openresty.org/package/ip2location/ip2proxy-resty/)
 
 This package allows user to query an IP address if it was being used as VPN anonymizer, open proxies, web proxies, Tor exits, data center, web hosting (DCH) range, search engine robots (SES), residential proxies (RES), consumer privacy networks (CPN), and enterprise private networks (EPN). It lookup the proxy IP address from **IP2Proxy BIN Data** file. This data file can be downloaded at
 
