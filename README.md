@@ -6,13 +6,9 @@ This package allows user to query an IP address if it was being used as VPN anon
 * Free IP2Proxy BIN Data: https://lite.ip2location.com
 * Commercial IP2Proxy BIN Data: https://www.ip2location.com/database/ip2proxy
 
-As an alternative, this package can also call the IP2Proxy Web Service. This requires an API key. If you don't have an existing API key, you can subscribe for one at the below:
-
-<https://www.ip2location.com/web-service/ip2proxy>
 
 ## Developer Documentation
 To learn more about installation, usage, and code examples, please visit the developer documentation at [https://ip2proxy-resty.readthedocs.io/en/latest/](https://ip2proxy-resty.readthedocs.io/en/latest/).
-
 
 
 ### Proxy Type

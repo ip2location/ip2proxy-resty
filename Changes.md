@@ -1,5 +1,9 @@
 # Revision history for ip2proxy
 
+## 3.4.1  -- 2026-01-07
+
+* Fixed incorrect function name.
+
 ## 3.4.0  -- 2025-02-20
 
 * Added support for fraud score.
