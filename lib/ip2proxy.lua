@@ -95,7 +95,7 @@ local threat_position = {0, 0, 0, 0, 0, 0, 0, 0, 12, 12, 12, 12}
 local provider_position = {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 13, 13}
 local fraudscore_position = {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 14}
 
-local api_version = "3.4.1"
+local api_version = "3.4.2"
 
 local modes = {
   countryshort = 0x00001,
@@ -140,6 +140,14 @@ local ipv6_not_supported = "IPv6 address missing in IPv4 BIN."
 
 local function printxstr(x)
   return ("0x"..bit.tohex(x))
+end
+
+local function bytes_to_int(bytearr)
+  local value = bn.new(0)
+  for i = 1, #bytearr, 1 do
+    value = value + bn.new(bytearr[i]):lshift((i - 1) * 8)
+  end
+  return value
 end
 
 -- read row
@@ -227,14 +235,6 @@ local function readuint128row(pos, row)
   if bytestr ~= nil then
     local bytes = { bytestr:byte(1, 16) }
     value = bytes_to_int(bytes)
-  end
-  return value
-end
-
-function bytes_to_int(bytearr)
-  local value = bn.new(0)
-  for i = 1, #bytearr, 1 do
-    value = value + bn.new(bytearr[i]):lshift((i - 1) * 8)
   end
   return value
 end

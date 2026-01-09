@@ -1,5 +1,9 @@
 # Revision history for ip2proxy
 
+## 3.4.2  -- 2026-01-09
+
+* Changed bytes_to_int to become a local function.
+
 ## 3.4.1  -- 2026-01-07
 
 * Fixed incorrect function name.
